@@ -1,33 +1,128 @@
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 5px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.header {
+body {
+  height: 100vh;
+  background: #34e7e4;
+  font-family: sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(245, 245, 238);
-  box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
 }
 
-.header > h1 {
-  margin-top: 10px;
+header {
+  background: #d7d8df;
+  padding: 2em 0 2em 0;
 }
 
-#btn-add-book {
-  height: 3rem;
-  width: 12rem;
-  color: white;
-  background-color: blue;
-  font-size: 1.5rem;
-  font-weight: bolder;
-  border: none;
-  border-radius: 20px;
-  margin: 30px;
+.main {
+  display: flex;
+  flex: 1;
 }
 
-#btn-add-book:hover {
+.book-popup {
+  width: 400px;
+  background: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  visibility: hidden;
+  transition: transform 0.4, top 0.4s;
+}
+
+.open-book-popup {
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.book-popup img {
+  width: 200px;
+  margin-top: -90px;
+  border-radius: 50%;
+}
+
+.book-popup h2 {
+  font-size: 38px;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+
+#btn-submit-book {
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #6fd649;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close-form-button-div {
+  margin-top: -100px;
+  margin-right: -330px;
+}
+
+#btn-close-form {
+  background: none;
+  border: none;
+  color: rgb(118, 124, 128);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.left {
+  background: #669dad;
+  padding: 3em 0 3em 0;
+  flex: 1 1 100px;
+}
+
+main {
+  background: #3c40c6;
+  padding: 3em 0 3em 0;
+  flex: 5 5 150px;
+}
+
+.read-unread {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right {
+  background: #669dad;
+  padding: 3em 0 3em 0;
+  flex: 1 1 100px;
+}
+
+footer {
+  background: #3c40c6;
+  padding: 1em 0 1em 0;
+}
+
+@media all and (max-width: 550px) {
+  .main {
+    flex-direction: column;
+  }
+  main {
+    padding: 5em 0 5em 0;
+  }
 }
