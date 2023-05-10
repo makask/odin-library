@@ -148,6 +148,12 @@ footer {
   padding: 1em 0 1em 0;
 }
 
+.right-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media all and (max-width: 550px) {
   .main {
     flex-direction: column;

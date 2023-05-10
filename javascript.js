@@ -80,14 +80,13 @@ function renderFormButtons() {
   });
 }
 
-function changeReadStatus() {}
-
 function deleteBook() {
   document.querySelectorAll('.btn-remove-book').forEach((item) => {
     item.addEventListener('click', () => {
       let deleteIndex = item.getAttribute('data-id');
       myLibrary.splice(deleteIndex, 1);
       renderBooks();
+      renderStats();
     });
   });
 }
@@ -103,7 +102,54 @@ submitBookForm.addEventListener('click', (event) => {
   addBookToLibrary();
   resetForm();
   renderBooks();
+  renderStats();
 });
+
+// Render Stats
+function renderStats() {
+  let books = 0;
+  let read = 0;
+  let unread = 0;
+  let pages = 0;
+  let booksTotal = document.getElementById('booksTotal');
+  booksTotal.innerHTML = books;
+  let readTotal = document.getElementById('readTotal');
+  readTotal.innerHTML = read;
+  let unreadTotal = document.getElementById('unreadTotal');
+  unreadTotal.innerHTML = unread;
+  let pagesTotal = document.getElementById('pagesTotal');
+  pagesTotal.innerHTML = pages;
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    booksTotal.innerHTML = myLibrary.length;
+    if (myLibrary[i].read === true) {
+      read += 1;
+      readTotal.innerHTML = read;
+    }
+    if (myLibrary[i].read === false) {
+      unread += 1;
+      unreadTotal.innerHTML = unread;
+    }
+    pages += Number(myLibrary[i].pages);
+    console.log(pages);
+    pagesTotal.innerHTML = pages;
+  }
+  if (read === 0) {
+    readTotal.innerHTML = 0;
+  }
+  if (unread === 0) {
+    unreadTotal.innerHTML = 0;
+  }
+  if (pages === 0) {
+    pagesTotal.innerHTML = 0;
+  }
+  read = 0;
+  unread = 0;
+  pages = 0;
+  if (myLibrary.length == 0) {
+    booksTotal.innerHTML = 0;
+  }
+}
 
 closeForm.addEventListener('click', () => {
   bookPopup.classList.remove('open-book-popup');
