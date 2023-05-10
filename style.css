@@ -101,6 +101,36 @@ main {
   flex: 5 5 150px;
 }
 
+.books-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-gap: 5px;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  background: white;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.btn-read .btn-remove-book {
+  width: 100px;
+  height: 40px;
+}
+
+.read {
+  background: blue;
+}
+
+.unread {
+  background: red;
+}
+
 .read-unread {
   display: flex;
   align-items: center;
