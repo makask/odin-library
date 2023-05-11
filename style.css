@@ -1,23 +1,63 @@
+@font-face {
+  font-family: Raleway-regular;
+  src: url('./fonts/Raleway-Regular.ttf');
+}
+
+:root {
+  --main-txt-color: #222222;
+  --main-background: white;
+  --popup-background: rgb(254, 254, 255);
+}
+
 * {
-  margin: 5px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
   height: 100vh;
-  background: #34e7e4;
-  font-family: sans-serif;
+  font-family: Raleway-regular;
   text-align: center;
-  color: white;
+  background-color: var(--main-background);
+  color: var(--main-txt-color);
   font-size: 24px;
   display: flex;
   flex-direction: column;
 }
 
 header {
-  background: #d7d8df;
-  padding: 2em 0 2em 0;
+  background: var(--main-background);
+  padding: 1.5em 0 1.5em 0;
+  border-bottom: 1px solid var(--main-txt-color);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exclamation {
+  color: orange;
+}
+.main-title {
+  margin-bottom: 12px;
+}
+
+#btn-addBook {
+  color: var(--main-background);
+  background: #0a95ff;
+  font-size: 20px;
+  font-weight: bold;
+  width: 12%;
+  height: 3rem;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border: none;
 }
 
 .main {
@@ -27,7 +67,7 @@ header {
 
 .book-popup {
   width: 400px;
-  background: #fff;
+  background: rgb(254, 254, 255);
   border-radius: 6px;
   position: absolute;
   top: 0;
@@ -38,11 +78,12 @@ header {
   color: #333;
   visibility: hidden;
   transition: transform 0.4, top 0.4s;
+  border: 2px solid var(--main-txt-color);
 }
 
 .open-book-popup {
   visibility: visible;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%) scale(1);
 }
 
@@ -58,22 +99,46 @@ header {
   margin: 30px 0 10px;
 }
 
+.popup-form-input-container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.popup-input {
+  height: 2rem;
+  width: 20rem;
+  margin-left: 6px;
+  margin-top: 20px;
+  background-color: #dfdeda;
+  font-size: 18px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: none;
+  border-radius: 8px;
+}
+
+::placeholder {
+  color: gray;
+}
+
 #btn-submit-book {
   width: 100%;
-  margin-top: 50px;
+  height: 3rem;
+  margin-top: 20px;
   padding: 10px 0;
   background: #6fd649;
-  color: #fff;
+  color: var(--popup-background);
   border: 0;
   outline: none;
   font-size: 18px;
-  border-radius: 4px;
+  border-radius: 16px;
   cursor: pointer;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .close-form-button-div {
-  margin-top: -100px;
+  margin-top: -90px;
   margin-right: -330px;
 }
 
@@ -90,13 +155,13 @@ header {
 }
 
 .left {
-  background: #669dad;
+  background: var(--main-background);
   padding: 3em 0 3em 0;
   flex: 1 1 100px;
 }
 
 main {
-  background: #3c40c6;
+  background: var(--main-background);
   padding: 3em 0 3em 0;
   flex: 5 5 150px;
 }
@@ -110,42 +175,76 @@ main {
 }
 
 .card-item {
-  display: flex;
-  flex-direction: column;
+  width: 20rem;
+  height: 22rem;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
   color: black;
-  background: white;
+  background: rgb(239, 242, 243);
+  justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  border: 2px solid var(--main-txt-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  word-break: break-all;
+  margin-bottom: 20px;
 }
 
-.btn-read .btn-remove-book {
-  width: 100px;
-  height: 40px;
+.btn-read,
+.btn-remove-book {
+  width: 200px;
+  height: 2.5rem;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-remove-book {
+  background-color: rgb(212, 16, 16);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .read {
-  background: blue;
+  background: #6fd649;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .unread {
-  background: red;
+  background: rgb(170, 105, 105);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .read-unread {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
+  align-items: center;
+}
+
+input[type='checkbox'] {
+  margin-left: 10px;
 }
 
 .right {
-  background: #669dad;
+  background: var(--main-background);
   padding: 3em 0 3em 0;
   flex: 1 1 100px;
 }
 
+.right-div > p {
+  margin: 5px;
+}
+
 footer {
-  background: #3c40c6;
+  background: var(--main-background);
   padding: 1em 0 1em 0;
+  border-top: 1px solid var(--main-txt-color);
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .right-div {

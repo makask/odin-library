@@ -15,6 +15,7 @@ let buttonAddBook = document.getElementById('btn-addBook');
 let bookPopup = document.getElementById('book-popup');
 let closeForm = document.getElementById('btn-close-form');
 let submitBookForm = document.getElementById('btn-submit-book');
+let submitForm = document.getElementById('add-book-form');
 
 function addBookToLibrary() {
   let title = document.getElementById('title').value;
@@ -69,6 +70,7 @@ function renderFormButtons() {
         item.classList.add('unread');
         item.innerHTML = 'Unread';
       }
+      renderStats();
     });
     if (item.innerText === 'true') {
       item.classList.add('read');
@@ -77,9 +79,11 @@ function renderFormButtons() {
       item.classList.add('unread');
       item.innerHTML = 'Unread';
     }
+    renderStats();
   });
 }
 
+// Delete book from array
 function deleteBook() {
   document.querySelectorAll('.btn-remove-book').forEach((item) => {
     item.addEventListener('click', () => {
@@ -98,6 +102,7 @@ buttonAddBook.addEventListener('click', () => {
 // Submit new book
 submitBookForm.addEventListener('click', (event) => {
   event.preventDefault();
+  submitBookForm.checkValidity();
   bookPopup.classList.remove('open-book-popup');
   addBookToLibrary();
   resetForm();
@@ -131,7 +136,6 @@ function renderStats() {
       unreadTotal.innerHTML = unread;
     }
     pages += Number(myLibrary[i].pages);
-    console.log(pages);
     pagesTotal.innerHTML = pages;
   }
   if (read === 0) {

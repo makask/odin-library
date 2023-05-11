@@ -10,11 +10,13 @@
   </head>
   <body>
     <header>
-      <h2>MY LIBRARY</h2>
-      <button id="btn-addBook">Add Book</button>
+      <div class="header-title">
+        <h1 class="main-title">myLibrary<h1 class="exclamation">!<h1></h1>
+      </div>
+      <button id="btn-addBook">Add New Book</button>
     </header>
     <div class="main">
-      <aside class="left">LEFT</aside>
+      <aside class="left"></aside>
       <main>
         <div class="book-popup" id="book-popup">
           <img src="./images/book.png" alt="Book Icon" />
@@ -23,23 +25,29 @@
           </div>
           <h2>Add new book</h2>
           <form id="add-book-form">
-            <input type="text" id="title" placeholder="Title" required />
-            <input type="author" id="author" placeholder="Author" required />
-            <input
-              type="number"
-              id="pages"
-              placeholder="Pages"
-              step="1"
-              min="1"
-            />
-            <div class="read-unread">
-              <p>Have you read it?</p>
-              <input type="checkbox" id="read" />
-            </div>
-            <button id="btn-submit-book" type="submit">Add Book</button>
+              <div class="popup-form-input-container">
+                <input class="popup-input" name="title" type="text" id="title" min="1" max="16" placeholder="Title"  />
+                <input class="popup-input" name="author" type="text" id="author" min="1" max="16" placeholder="Author" />
+                <input
+                  class="popup-input"
+                  type="number"
+                  id="pages"
+                  name="pages"
+                  placeholder="Pages"
+                  step="1"
+                  min="1"
+                  max="2000"
+                />
+                <div class="read-unread">
+                  <p>Have you read it?</p>
+                  <input type="checkbox" id="read" />
+                </div>           
+              </div>
+            <button id="btn-submit-book" type="submit">Confirm!</button>
           </form>
         </div>
-        <div class="books-container"></div>
+        <div class="books-container">
+        </div>
       </main>
       <aside class="right">
         <div class="right-div">
@@ -61,5 +69,5 @@
       </aside>
     </div>
   </body>
-  <footer>Copyright © 2023 Marko Kasekas Kask (github logo)</footer>
+  <footer><h6>Copyright © 2023 Marko Kask</h6></footer>
 </html>
