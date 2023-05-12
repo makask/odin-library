@@ -23,7 +23,37 @@ function addBookToLibrary() {
   let pages = document.getElementById('pages').value;
   let read = document.getElementById('read').checked;
   let newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+
+  if (valid(title, author, pages, read)) {
+    myLibrary.push(newBook);
+    bookPopup.classList.remove('open-book-popup');
+    restoreDefaultForm();
+  }
+}
+
+function valid(title, author, pages) {
+  let titleField = document.getElementById('title');
+  let authorField = document.getElementById('author');
+  let pagesField = document.getElementById('pages');
+  let numberOfPages = Number(pages);
+  if (title === '') {
+    titleField.placeholder = '* Title cannot be empty!';
+    titleField.classList.remove('gray');
+    titleField.classList.add('red');
+    return false;
+  } else if (author === '') {
+    authorField.placeholder = '* Author cannot be empty!';
+    authorField.classList.remove('gray');
+    authorField.classList.add('red');
+    return false;
+  } else if (numberOfPages < 1) {
+    pagesField.placeholder = '* Enter number greater than zero!';
+    pagesField.classList.remove('gray');
+    pagesField.classList.add('red');
+    return false;
+  } else {
+    return true;
+  }
 }
 
 function resetForm() {
@@ -44,7 +74,7 @@ function renderSubmitForm() {
   books.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i++) {
     books.innerHTML += `<div class="card-item">
-      <p>${myLibrary[i].title}</p>
+      <p>"${myLibrary[i].title}"</p>
       <p>${myLibrary[i].author}</p>
       <p>${myLibrary[i].pages}</p>
       <button data-id="${i}" class="btn-read"> ${myLibrary[i].read}
@@ -103,7 +133,6 @@ buttonAddBook.addEventListener('click', () => {
 submitBookForm.addEventListener('click', (event) => {
   event.preventDefault();
   submitBookForm.checkValidity();
-  bookPopup.classList.remove('open-book-popup');
   addBookToLibrary();
   resetForm();
   renderBooks();
@@ -116,6 +145,7 @@ function renderStats() {
   let read = 0;
   let unread = 0;
   let pages = 0;
+
   let booksTotal = document.getElementById('booksTotal');
   booksTotal.innerHTML = books;
   let readTotal = document.getElementById('readTotal');
@@ -157,4 +187,20 @@ function renderStats() {
 
 closeForm.addEventListener('click', () => {
   bookPopup.classList.remove('open-book-popup');
+  restoreDefaultForm();
 });
+
+function restoreDefaultForm() {
+  let title = document.getElementById('title');
+  let author = document.getElementById('author');
+  let pages = document.getElementById('pages');
+  title.classList.remove('red');
+  author.classList.remove('red');
+  pages.classList.remove('red');
+  title.classList.add('gray');
+  author.classList.add('gray');
+  pages.classList.add('gray');
+  title.placeholder = 'Title';
+  author.placeholder = 'Author';
+  pages.placeholder = 'Pages';
+}

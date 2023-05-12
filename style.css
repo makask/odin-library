@@ -239,6 +239,14 @@ input[type='checkbox'] {
   margin: 5px;
 }
 
+.red::placeholder {
+  color: rgb(201, 77, 77);
+}
+
+.gray::placeholder {
+  color: gray;
+}
+
 footer {
   background: var(--main-background);
   padding: 1em 0 1em 0;
