@@ -1,15 +1,17 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-Book.prototype.setRead = function (read) {
-  this.read = read;
-};
+  setRead(read) {
+    this.read = read;
+  }
+}
 
 let buttonAddBook = document.getElementById('btn-addBook');
 let bookPopup = document.getElementById('book-popup');
